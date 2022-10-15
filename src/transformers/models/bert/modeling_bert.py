@@ -197,6 +197,7 @@ class BertEmbeddings(nn.Module):
         self.register_buffer(
             "token_type_ids", torch.zeros(self.position_ids.size(), dtype=torch.long), persistent=False
         )
+        
 
     def forward(
         self,
@@ -237,6 +238,7 @@ class BertEmbeddings(nn.Module):
             embeddings += position_embeddings
         embeddings = self.LayerNorm(embeddings)
         embeddings = self.dropout(embeddings)
+        print("conv 이전 : ",embeddings.shape)
         return embeddings
 
 
